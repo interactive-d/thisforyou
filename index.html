@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Nikki ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#000;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::-webkit-scrollbar{
+      width:8px;
+    }
+
+    body::-webkit-scrollbar-thumb{
+      background:#e50914;
+      border-radius:20px;
+    }
+
+    .hero{
+      height:100vh;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      padding:0 8%;
+      background:url('bg.png?q=80&w=1600&auto=format&fit=centre') center/cover no-repeat;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,#000 5%,rgba(0,0,0,0.3),#000 100%);
+    }
+
+    nav{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      padding:25px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:10;
+    }
+
+    .logo{
+      color:#e50914;
+      font-size:40px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .profile{
+      width:45px;
+      height:45px;
+      border-radius:8px;
+      overflow:hidden;
+      border:2px solid rgba(255,255,255,0.4);
+    }
+
+    .profile img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:5;
+      max-width:700px;
+    }
+
+    .hero-content h1{
+      font-size:75px;
+      line-height:1.05;
+      margin-bottom:20px;
+      font-weight:800;
+      text-shadow:0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .hero-content p{
+      font-size:20px;
+      line-height:1.8;
+      color:rgba(255,255,255,0.85);
+      margin-bottom:30px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 34px;
+      border:none;
+      border-radius:8px;
+      font-size:17px;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+    }
+
+    .play-btn{
+      background:white;
+      color:black;
+    }
+
+    .play-btn:hover{
+      transform:scale(1.05);
+    }
+
+    .info-btn{
+      background:rgba(109,109,110,0.7);
+      color:white;
+      backdrop-filter:blur(10px);
+    }
+
+    .info-btn:hover{
+      background:rgba(255,255,255,0.25);
+    }
+
+    section{
+      padding:60px 5%;
+    }
+
+    .row-title{
+      font-size:28px;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .movie-row{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      padding-bottom:15px;
+    }
+
+    .movie-row::-webkit-scrollbar{
+      display:none;
+    }
+
+    .card{
+      min-width:280px;
+      height:170px;
+      border-radius:15px;
+      overflow:hidden;
+      position:relative;
+      cursor:pointer;
+      transition:0.4s;
+      flex-shrink:0;
+    }
+
+    .card:hover{
+      transform:scale(1.08);
+      z-index:5;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .card-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.95),transparent);
+      display:flex;
+      align-items:flex-end;
+      padding:18px;
+    }
+
+    .card-overlay h3{
+      font-size:20px;
+    }
+
+    .message-section{
+      background:linear-gradient(135deg,#111,#1c1c1c);
+      padding:100px 8%;
+      text-align:center;
+    }
+
+    .message-box{
+      max-width:900px;
+      margin:auto;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:60px 40px;
+      border-radius:30px;
+      backdrop-filter:blur(15px);
+      box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .message-box h2{
+      font-size:55px;
+      margin-bottom:25px;
+      color:#e50914;
+    }
+
+    .message-box p{
+      font-size:20px;
+      line-height:2;
+      color:rgba(255,255,255,0.85);
+    }
+
+    .video-section{
+      padding:100px 8%;
+      text-align:center;
+    }
+
+    .video-section h2{
+      font-size:50px;
+      margin-bottom:40px;
+    }
+
+    .video-container{
+      max-width:1000px;
+      margin:auto;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    video{
+      width:100%;
+      display:block;
+    }
+
+    .countdown{
+      padding:90px 5%;
+      text-align:center;
+      background:#090909;
+    }
+
+    .countdown h2{
+      font-size:48px;
+      margin-bottom:40px;
+    }
+
+    .timer{
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .time-box{
+      width:140px;
+      height:140px;
+      background:rgba(255,255,255,0.06);
+      border-radius:25px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .time-box h3{
+      font-size:50px;
+      color:#e50914;
+    }
+
+    .gallery{
+      padding:100px 5%;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .gallery-grid img{
+      width:100%;
+      height:350px;
+      object-fit:cover;
+      border-radius:20px;
+      transition:0.4s;
+    }
+
+    .gallery-grid img:hover{
+      transform:scale(1.04);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:rgba(255,255,255,0.5);
+      background:#000;
+    }
+
+    @media(max-width:900px){
+      .hero-content h1{
+        font-size:55px;
+      }
+
+      .message-box h2{
+        font-size:42px;
+      }
+
+      .video-section h2,
+      .countdown h2{
+        font-size:38px;
+      }
+    }
+
+    @media(max-width:768px){
+      nav{
+        padding:20px 5%;
+      }
+
+      .hero{
+        padding:0 5%;
+        text-align:center;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:42px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .message-box{
+        padding:40px 25px;
+      }
+
+      .message-box h2{
+        font-size:32px;
+      }
+
+      .message-box p{
+        font-size:17px;
+      }
+
+      .video-section h2,
+      .countdown h2{
+        font-size:30px;
+      }
+
+      .time-box{
+        width:110px;
+        height:110px;
+      }
+
+      .time-box h3{
+        font-size:35px;
+      }
+
+      .card{
+        min-width:220px;
+        height:140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="overlay"></div>
+
+  <nav>
+    <div class="logo">Deeeaaah ❤️</div>
+
+    <div class="profile">
+      <img src="icon.png?q=80&w=600&auto=format&fit=crop" alt="profile">
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1>
+      Happy Birthday
+      NIKKI ❤️
+    </h1>
+
+    <p>
+      Every moment with you feels like my favorite movie.
+      Today is all about celebrating the most beautiful person in my life.
+    </p>
+
+    <div class="buttons">
+      <button class="btn play-btn" onclick="playMusic()">
+        ▶ Play Love
+      </button>
+
+      <a href="#message" class="btn info-btn">
+        ❤️ The More I Wanna Tell You Dear
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="row-title">Beautiful Memories</h2>
+
+  <div class="movie-row">
+    <div class="card">
+      <img src="sm.png?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-overlay">
+        <h3>Your Smile</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="auth.png?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-overlay">
+        <h3>Your Authenticity</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="for.png?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-overlay">
+        <h3>Forever Together</h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="myfav.png?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-overlay">
+        <h3>My Favorite Person</h3>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="message-section" id="message">
+  <div class="message-box">
+    <h2>To The GEM I Never Wanna Lose In My Life ❤️</h2>
+
+    <p>
+      You are the reason behind my happiest smiles,
+      my peaceful nights, and my beautiful dreams.
+      
+      Every second spent with you becomes a memory I never want to lose.
+      
+      Thank you for bringing endless love, warmth, care, and happiness into my world.
+      
+      On your special day, I just want you to know:
+      
+      You are deeply loved.
+      You are incredibly special.
+      And you will always be my favorite person forever. ❤️
+    </p>
+  </div>
+</section>
+
+<section class="video-section">
+  <h2>Just Watch it PLEASE 🎬</h2>
+
+  <div class="video-container">
+    <video controls>
+      <source src="video2.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section class="countdown">
+  <h2>Time Since I Fell For You ❤️</h2>
+
+  <div class="timer">
+    <div class="time-box">
+      <h3 id="days">00</h3>
+      <p>Days</p>
+    </div>
+
+    <div class="time-box">
+      <h3 id="hours">00</h3>
+      <p>Hours</p>
+    </div>
+
+    <div class="time-box">
+      <h3 id="minutes">00</h3>
+      <p>Minutes</p>
+    </div>
+
+    <div class="time-box">
+      <h3 id="seconds">00</h3>
+      <p>Seconds</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <h2 class="row-title">Gallery Of Love 📸</h2>
+
+  <div class="gallery-grid">
+    <img src="nikki.png?q=80&w=1200&auto=format&fit=crop">
+
+    <img src="sm.png?q=80&w=1200&auto=format&fit=crop">
+
+    <img src="myfav.png?q=80&w=1200&auto=format&fit=crop">
+
+    <img src="bg.png?q=80&w=1200&auto=format&fit=crop">
+  </div>
+</section>
+
+<footer>
+  Made With Endless Love ❤️
+</footer>
+
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  function playMusic(){
+    document.getElementById('bgMusic').play();
+  }
+
+  const startDate = new Date('2025-09-21').getTime();
+
+  setInterval(()=>{
+    const now = new Date().getTime();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+    document.getElementById('days').innerHTML = days;
+    document.getElementById('hours').innerHTML = hours;
+    document.getElementById('minutes').innerHTML = minutes;
+    document.getElementById('seconds').innerHTML = seconds;
+  },1000);
+</script>
+
+</body>
+</html>
+
